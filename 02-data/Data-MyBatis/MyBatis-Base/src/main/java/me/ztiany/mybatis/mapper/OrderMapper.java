@@ -12,16 +12,24 @@ import me.ztiany.mybatis.pojo.User;
  */
 public interface OrderMapper {
 
-    //查询订单表order的所有数据
+    /**
+     * 查询订单表 order 的所有数据数
+     */
     Integer insertOrder(Order order);
 
-    //查询订单表order的所有数据
+    /**
+     * 查询订单表 order 的所有数据
+     */
     List<Order> selectOrders();
 
-    //一对一关联 查询，以订单为中心关联用户
+    /**
+     * 一对一关联查询，以订单为中心关联用户
+     */
     List<Order> selectOrdersList();
 
-    //一对多关联
+    /**
+     * 一对多关联
+     */
     List<User> selectUserList();
 
 }

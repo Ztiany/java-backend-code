@@ -10,8 +10,6 @@ import java.io.InputStream;
 import java.util.Date;
 
 import me.ztiany.mybatis.pojo.User;
-import me.ztiany.mybatis.test.basic.s02_dao.dao.UserDao;
-import me.ztiany.mybatis.test.basic.s02_dao.dao.UserDaoImpl;
 
 /**
  * MyBatis + 传统 DAO 模式：DAO编写繁复

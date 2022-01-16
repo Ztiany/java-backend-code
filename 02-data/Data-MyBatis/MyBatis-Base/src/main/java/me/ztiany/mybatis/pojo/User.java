@@ -3,9 +3,9 @@ package me.ztiany.mybatis.pojo;
 import java.util.Date;
 import java.util.List;
 
-public class User  {
+public class User {
 
-    private Integer id;
+    private Integer id;//主键 id
     private String username;// 用户姓名
     private String sex;// 性别
     private Date birthday;// 生日
@@ -63,8 +63,7 @@ public class User  {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", sex=" + sex
-                + ", birthday=" + birthday + ", address=" + address + ", ordersList=" + orderList + "]";
+        return "User [id=" + id + ", username=" + username + ", sex=" + sex + ", birthday=" + birthday + ", address=" + address + ", ordersList=" + orderList + "]";
     }
 
 }

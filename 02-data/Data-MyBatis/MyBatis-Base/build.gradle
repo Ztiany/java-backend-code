@@ -14,7 +14,8 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
     }
-/*    dependencies {
+
+    /*dependencies {
         classpath "gradle.plugin.com.thinkimi.gradle:mybatis-generator-plugin:2.0"
     }*/
 }
@@ -40,12 +41,9 @@ repositories {
 
 
 dependencies {
-
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
     //test
     testCompile testLibs.junit
-
     //Spring核心架构
     //core
     compile springLibs.springCore
@@ -61,13 +59,11 @@ dependencies {
     compile springLibs.springTx
     //test
     testCompile springLibs.springTest
-
     /*数据库*/
     compile dataBaseLibs.mysqlConnector
     compile dataBaseLibs.dbcp2
     compile dataBaseLibs.mybatis
     compile dataBaseLibs.mybatisSpring
-
     /*日志库，不依赖则不会有日志*/
     compile logLibs.commonsLogging
     compile logLibs.log4j

@@ -1,4 +1,4 @@
-package me.ztiany.mybatis.test.basic.s02_dao.dao;
+package me.ztiany.mybatis.test.basic.s02_dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

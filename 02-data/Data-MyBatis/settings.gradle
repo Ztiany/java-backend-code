@@ -1,4 +1,4 @@
-rootProject.name = 'MyBatis'
+rootProject.name = 'Data-MyBatis'
 
 include 'MyBatis-Base'
 include 'MyBatis-Spring'

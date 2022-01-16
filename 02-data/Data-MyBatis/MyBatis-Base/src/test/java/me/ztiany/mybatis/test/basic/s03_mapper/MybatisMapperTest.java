@@ -21,7 +21,7 @@ import me.ztiany.mybatis.pojo.QueryVO;
 import me.ztiany.mybatis.pojo.User;
 
 /**
- * MyBatis  + Mapper 动态代理开发(不需要开发者自己编写Mapper实现，MyBatis根据接口中定义的方法签名自动定位mapper.xml 中配置的 sql)
+ * MyBatis  + Mapper 动态代理开发(不需要开发者自己编写 Mapper 实现，MyBatis根据接口中定义的方法签名自动定位 mapper.xml 中配置的 sql)
  */
 public class MybatisMapperTest {
 
@@ -43,6 +43,7 @@ public class MybatisMapperTest {
     @Test
     public void testMapper() {
         SqlSession sqlSession = newSqlSession();
+        //拿到的是 MyBatis 生成的代理对象
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         //org.apache.ibatis.binding.MapperProxy@73ad2d6
         System.out.println("UserMapper: " + userMapper);
@@ -71,7 +72,6 @@ public class MybatisMapperTest {
         sqlSession.commit();
         sqlSession.close();
     }
-
 
     @Test
     public void testFindUserByQueryVO() {

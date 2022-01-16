@@ -9,6 +9,22 @@
 
 <body>
 
+<hr/>
+
+<h2>
+    运行信息：
+</h2>
+<ul>
+    <li><%out.write("getRealPath = " + getServletConfig().getServletContext().getRealPath("/"));%></li>
+    <li><%out.write("ContextPath = " + getServletConfig().getServletContext().getContextPath());%></li>
+</ul>
+
+
+<hr/>
+
+<h2>
+    内容：
+</h2>
 <ul>
 
     <%
@@ -64,6 +80,7 @@
     </li>
 
 </ul>
+<hr/>
 
 </body>
 

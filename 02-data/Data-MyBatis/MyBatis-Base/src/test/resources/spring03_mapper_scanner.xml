@@ -38,5 +38,4 @@
         <!--<property name="annotationClass" value="me.ztiany.mybatis.test.spring.MapperScanner"/>-->
     </bean>
 
-
 </beans>

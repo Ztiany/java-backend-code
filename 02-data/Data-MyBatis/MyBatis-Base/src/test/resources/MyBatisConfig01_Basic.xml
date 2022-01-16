@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
 
@@ -10,11 +10,16 @@
      -->
     <properties resource="db.properties"/>
 
-    <!-- 用于配置多种数据库环境，比如开发、测试、生产，和spring整合后则不需要使用 environments-->
+    <settings>
+        <!--打印 SQL 语句-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!-- 用于配置多种数据库环境，比如开发、测试、生产，和 spring 整合后则不需要使用 environments-->
     <environments default="development">
         <!--开发环境，用于开发-->
         <environment id="development">
-            <!-- 使用jdbc事务管理，可选项在 org.apache.ibatis.session.Configuration 类中 -->
+            <!-- 使用 jdbc 事务管理，可选项在 org.apache.ibatis.session.Configuration 类中 -->
             <transactionManager type="JDBC"/>
             <!-- 数据库连接池 -->
             <dataSource type="POOLED">
@@ -26,9 +31,9 @@
         </environment>
     </environments>
 
-    <!-- Mapper的位置  Mapper.xml 写Sql语句的文件的位置 -->
+    <!-- Mapper 的位置 Mapper.xml 写 sql 语句的文件的位置 -->
     <mappers>
-        <mapper resource="sqlmap/User.xml"/>
+        <mapper resource="./sqlmap/User.xml"/>
     </mappers>
 
 </configuration>

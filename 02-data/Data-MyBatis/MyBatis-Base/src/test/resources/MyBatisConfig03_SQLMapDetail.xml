@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
 
@@ -17,10 +17,13 @@
             Oracle不支持 JdbcType.Other，插入空值会报错，所以这里改为 JdbcType.NULL。
         -->
         <setting name="jdbcTypeForNull" value="NULL"/>
-        <!--显示的指定每个我们需要更改的配置的值，即使他是默认的。防止版本更新带来的问题  -->
+        <!--显示指定每个我们需要更改的配置的值，即使他是默认的。防止版本更新带来的问题  -->
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="aggressiveLazyLoading" value="false"/>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!--开启驼峰命名法：数据库字段与 Java 自动名对应-->
+        <!-- 	<setting name="mapUnderscoreToCamelCase" value="true"/> -->
     </settings>
 
     <!--
@@ -37,7 +40,7 @@
                 environment：配置一个具体的环境信息，必须有两个标签，id代表当前环境的唯一标识
                     transactionManager：事务管理器。
                         type：事务管理器的类型，JDBC(JdbcTransactionFactory) 或者 MANAGED(ManagedTransactionFactory)
-                            自定义事务管理器：实现 TransactionFactory 接口，type 指定为全类名
+                                    自定义事务管理器：实现 TransactionFactory 接口，type 指定为全类名
 
                     dataSource：数据源。
                         type：数据源类型，可选择：
@@ -46,7 +49,9 @@
                                 JNDI(JndiDataSourceFactory)
                                 自定义数据源：实现DataSourceFactory接口，type是全类名
     -->
+
     <!-- 和spring整合后 environments配置将废除-->
+    <!-- 这里 default 指定为 mysql 环境，则应用的是 mysql 环境 -->
     <environments default="dev_mysql">
         <!--mysql环境-->
         <environment id="dev_mysql">
@@ -86,6 +91,25 @@
 
     <!-- 6、将sql映射注册到全局配置中 -->
     <mappers>
+        <!--
+        注册配置文件的四种方式：
+
+                1 resource 方式：引用类路径下的sql映射文件
+                        mybatis/mapper/EmployeeMapper.xml
+
+                2 url 方式：引用网路路径或者磁盘路径下的sql映射文件
+                    file:///var/mappers/AuthorMapper.xml
+
+                3 class 方式：引用（注册）接口，
+                    1、有sql映射文件，映射文件名必须和接口同名，并且放在与接口同一目录下
+                    2、没有sql映射文件，所有的sql都是利用注解写在接口上
+                    推荐：
+                        比较重要的，复杂的Dao接口我们来写sql映射文件
+                        不重要，简单的Dao接口为了开发快速可以使用注解
+
+                4 package 方式：注册指定包下的所有mapper接口，要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
+            -->
+
         <!--注册指定包下的所有mapper接口，此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。-->
         <package name="me.ztiany.mybatis.mapper"/>
     </mappers>

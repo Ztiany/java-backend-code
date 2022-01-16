@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="me.ztiany.mybatis.mapper.EmployeeMapperAssociation">
 
-    <!--
-        resultMap 基础用法
-      -->
-    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="MySimpleEmp">
-        <!--指定主键列的封装规则（也可以使用 result 指定，但是使用id定义主键映射，会有底层有优化；）
-        column：指定哪一列
-        property：指定对应的javaBean属性
+    <!-- ======================= resultMap 基础用法 ============================ -->
+    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="EmployeeMap">
+        <!--指定主键列的封装规则（也可以使用 result 指定，但是使用id定义主键映射，会有底层优化；）
+                column：指定哪一列
+                property：指定对应的javaBean属性
           -->
         <id column="id" property="id"/>
         <!-- 定义普通列封装规则 -->
@@ -20,22 +18,21 @@
         <result column="email" property="email"/>
         <result column="gender" property="gender"/>
     </resultMap>
-    <!-- resultMap:自定义结果集映射规则；  -->
+
     <!-- public Employee getEmpById(Integer id); -->
-    <select id="getEmpById" resultMap="MySimpleEmp">
+    <select id="getEmpById" resultMap="EmployeeMap">
         select *
         from tbl_employee
         where id = #{id}
     </select>
 
-    <!-- 
-    场景一：查询Employee的同时查询员工对应的部门，Employee<==>Department：一个员工有与之对应的部门信息
-     -->
 
+    <!-- ======================= resultMap 的关联查询 1 ============================ -->
+    <!--  场景一：查询Employee的同时查询员工对应的部门，Employee<==>Department：一个员工有与之对应的部门信息 -->
     <!--
-        方式1：联合查询，级联属性封装结果集
+        方式1：联合查询，级联属性封装结果集，比如下面的 dept.id 表示 Employee 类中 dept(Department 类型) 的 id。
       -->
-    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="MyDifEmp">
+    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="EmployeeWithDeptMap1">
         <id column="id" property="id"/>
         <result column="last_name" property="lastName"/>
         <result column="gender" property="gender"/>
@@ -46,7 +43,7 @@
     <!-- 
         方式2：使用association定义关联的单个对象的封装规则
      -->
-    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="MyDifEmp2">
+    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="EmployeeWithDeptMap2">
         <id column="id" property="id"/>
         <result column="last_name" property="lastName"/>
         <result column="gender" property="gender"/>
@@ -60,16 +57,21 @@
             <result column="dept_name" property="departmentName"/>
         </association>
     </resultMap>
+
     <!--  public Employee getEmpAndDept(Integer id);-->
-    <select id="getEmpAndDept" resultMap="MyDifEmp">
-        SELECT e.id        id,
-               e.last_name last_name,
-               e.gender    gender,
-               e.d_id      d_id,
-               d.id        did,
-               d.dept_name dept_name
-        FROM tbl_employee e,
-             tbl_dept d
+    <select id="getEmpAndDept" resultMap="EmployeeWithDeptMap1">
+        SELECT
+            /*给属性定义别名，方便 resultMap 中使用*/
+            e.id        id,
+            e.last_name last_name,
+            e.gender    gender,
+            e.d_id      d_id,
+            d.id        did,
+            d.dept_name dept_name
+        FROM
+            /*定义从哪些表中查询*/
+            tbl_employee e,
+            tbl_dept d
         WHERE e.d_id = d.id
           AND e.id = #{id}
     </select>
@@ -80,25 +82,26 @@
         2、根据查询员工信息中的d_id值去部门表查出部门信息
         3、部门设置到员工中；
      -->
-    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="MyEmpByStep">
+    <resultMap type="me.ztiany.mybatis.pojo.Employee" id="EmpByStepMap">
         <id column="id" property="id"/>
         <result column="last_name" property="lastName"/>
         <result column="email" property="email"/>
         <result column="gender" property="gender"/>
+
         <!-- association定义关联对象的封装规则
-            select:表明当前属性是调用select指定的方法查出的结果
-            column:指定将哪一列的值传给这个方法
-            
+                    select:表明当前属性是调用select指定的方法查出的结果
+                    column:指定将哪一列的值传给这个方法
             流程：使用select指定的方法（传入column指定的这列参数的值）查出对象，并封装给property指定的属性
          -->
         <association
-            property="dept"
-            select="me.ztiany.mybatis.mapper.DepartmentMapper.getDeptById"
-            column="d_id">
+                property="dept"
+                select="me.ztiany.mybatis.mapper.DepartmentMapper.getDeptById"
+                column="d_id">
         </association>
     </resultMap>
+
     <!--  public Employee getEmpByIdAssociatedLazy(Integer id);-->
-    <select id="getEmpByIdAssociatedLazy" resultMap="MyEmpByStep">
+    <select id="getEmpByIdAssociatedLazy" resultMap="EmpByStepMap">
         select *
         from tbl_employee
         where id = #{id}
@@ -107,12 +110,23 @@
     <!-- 可以使用延迟加载即按需加载、也叫懒加载。
        对于 Employee 和 Dept 的对于关系：
             希望每次查询Employee对象的时候，对于部门信息，只在我们使用的时候才去查询。
-
             实现方式：只需要在分段查询的基础之上加上两个配置即可实现：
                 <setting name="lazyLoadingEnabled" value="true"/>
                 <setting name="aggressiveLazyLoading" value="false"/>
      -->
-    <!-- ==================association============================ -->
+
+
+    <!-- ======================= resultMap 的关联查询 2 ============================ -->
+    <!-- 场景二：查询部门的时候将部门对应的所有员工信息也查询出来。  -->
+    <!-- 定义一个简单查询，用于 DepartmentMapper 中的的分步查询。-->
+
+    <!-- public List<Employee> getEmpsByDeptId(Integer deptId); -->
+    <select id="getEmpsByDeptId" resultType="me.ztiany.mybatis.pojo.Employee">
+        select *
+        from tbl_employee
+        where d_id = #{deptId}
+    </select>
+
 
     <!-- =======================鉴别器============================ -->
     <!-- <discriminator javaType=""></discriminator>
@@ -128,16 +142,17 @@
         <result column="gender" property="gender"/>
         <!--
             column：指定判定的列名
-            javaType：列值对应的java类型  -->
+            javaType：列值对应的java类型
+         -->
         <discriminator javaType="string" column="gender">
-            <!--女生  resultType:指定封装的结果类型；不能缺少。/resultMap-->
+            <!--女生  resultType 或 resultMap 指定封装的结果类型；不能缺少。-->
             <case value="0" resultType="me.ztiany.mybatis.pojo.Employee">
                 <association property="dept"
                              select="me.ztiany.mybatis.mapper.DepartmentMapper.getDeptById"
                              column="d_id">
                 </association>
             </case>
-            <!--男生 ;如果是男生，把last_name这一列的值赋值给email; -->
+            <!--男生：如果是男生，把last_name这一列的值赋值给email; -->
             <case value="1" resultType="me.ztiany.mybatis.pojo.Employee">
                 <id column="id" property="id"/>
                 <result column="last_name" property="lastName"/>
@@ -147,15 +162,5 @@
         </discriminator>
     </resultMap>
     <!-- =======================鉴别器============================ -->
-
-    <!--
-    场景二：查询部门的时候将部门对应的所有员工信息也查询出来，提供给  DepartmentMapper.xml  使用。
-     -->
-    <!-- public List<Employee> getEmpsByDeptId(Integer deptId); -->
-    <select id="getEmpsByDeptId" resultType="me.ztiany.mybatis.pojo.Employee">
-        select *
-        from tbl_employee
-        where d_id = #{deptId}
-    </select>
 
 </mapper>
