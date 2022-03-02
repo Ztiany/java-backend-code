@@ -75,7 +75,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from mybatis_user
+    from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,27 +86,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from mybatis_user
+    from user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from mybatis_user
+    delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="me.ztiany.mybatis.generate.pojo.UserExample">
-    delete from mybatis_user
+    delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="me.ztiany.mybatis.generate.pojo.User">
-    insert into mybatis_user (id, username, birthday, 
+    insert into user (id, username, birthday, 
       sex, address)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
       #{sex,jdbcType=CHAR}, #{address,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="me.ztiany.mybatis.generate.pojo.User">
-    insert into mybatis_user
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -143,13 +143,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="me.ztiany.mybatis.generate.pojo.UserExample" resultType="java.lang.Long">
-    select count(*) from mybatis_user
+    select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update mybatis_user
+    update user
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -172,7 +172,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update mybatis_user
+    update user
     set id = #{record.id,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       birthday = #{record.birthday,jdbcType=DATE},
@@ -183,7 +183,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="me.ztiany.mybatis.generate.pojo.User">
-    update mybatis_user
+    update user
     <set>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
@@ -201,7 +201,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="me.ztiany.mybatis.generate.pojo.User">
-    update mybatis_user
+    update user
     set username = #{username,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=DATE},
       sex = #{sex,jdbcType=CHAR},

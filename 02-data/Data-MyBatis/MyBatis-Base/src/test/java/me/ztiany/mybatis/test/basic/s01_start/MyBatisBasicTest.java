@@ -15,7 +15,7 @@ import java.util.List;
 import me.ztiany.mybatis.pojo.User;
 
 /**
- * 测试MyBatis基础功能：
+ * 测试MyBatis基础功能
  *
  * @author Ztiany
  * Email ztiany3@gmail.com
@@ -25,19 +25,18 @@ public class MyBatisBasicTest {
 
     /*
      * 注意：
-     * 1. SqlSession代表和数据库的一次会话，用完必须关闭。
-     * 2. SqlSession和connection一样都是非线程安全。每次使用都应该去获取新的对象。
-     * 3. 全局配置文件用于配置Mybatis，也可以使用注解的方式而不需要使用xml。
-     * 4. selectOne(sql) 这种方式下 sql 映射文件是必须的。
      *
-     * 使用步骤：
-     * 1、根据xml配置文件（全局配置文件）创建一个SqlSessionFactory对象，该对象有数据源一些运行环境信息
-     * 2、sql映射文件；配置了每一个sql，以及sql的封装规则等。
-     * 3、将sql映射文件注册在全局配置文件中
-     * 4、写代码：
-     *      1）、根据全局配置文件得到SqlSessionFactory；
-     *      2）、使用sqlSession工厂，获取到sqlSession对象使用它来执行增删改查，一个sqlSession就是代表和数据库的一次会话，用完关闭
-     *      3）、使用sql的唯一标志来告诉MyBatis执行哪个sql，sql都是保存在sql映射文件中的。
+     * 1. SqlSession 代表和数据库的一次会话，用完必须关闭。
+     * 2. SqlSession 和 connection 一样都是非线程安全。每次使用都应该去获取新的对象。
+     * 3. 全局配置文件用于配置 Mybatis，也可以使用注解的方式而不需要使用 xml。
+     * 4. selectOne(sql) 这种方式下 sql 映射文件是必须的。
+     *      使用步骤：
+     *          1、根据 xml 配置文件（全局配置文件）创建一个 SqlSessionFactory 对象，该对象有数据源一些运行环境信息
+     *          2、sql 映射文件；配置了每一个 sql，以及 sql 的封装规则等。
+     *          3、将 sql 映射文件注册在全局配置文件中
+     *          4、写代码：
+     *              1）、根据全局配置文件得到 SqlSessionFactory；
+     *              2）、使用 sqlSession 工厂，获取到 sqlSession 对象使用它来执行增删改查，一个 sqlSession 就是代表和数据库的一次会话，用完关闭
      */
 
     private SqlSessionFactory sqlSessionFactory;
@@ -57,7 +56,7 @@ public class MyBatisBasicTest {
 
     @Test
     public void testMybatis() {
-        //执行Sql语句：命名空间.sqlID
+        //执行Sql语句：namespace.sql_id
         SqlSession sqlSession = newSqlSession();
         User user = sqlSession.selectOne("test.findUserById", 10);
         System.out.println(user);

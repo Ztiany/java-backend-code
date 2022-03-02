@@ -109,6 +109,10 @@ ext {
             //mybatis
             // https://mvnrepository.com/artifact/org.mybatis/mybatis
             mybatis               : 'org.mybatis:mybatis:3.5.4',
+			// https://mvnrepository.com/artifact/org.mybatis.caches/mybatis-ehcache
+			mybatisEhcache		  : 'org.mybatis.caches:mybatis-ehcache:1.2.1',
+			// https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper
+			myBatisPagerHelper	  : 'com.github.pagehelper:pagehelper:5.2.0',
             // https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
             mybatisSpring         : 'org.mybatis:mybatis-spring:2.0.4',
 
@@ -183,7 +187,12 @@ ext {
             // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
             slf4jApi      : 'org.slf4j:slf4j-api:1.7.26',
             // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
-            slf4jLog4j12  : 'org.slf4j:slf4j-log4j12:1.7.26'
+            slf4jLog4j12  : 'org.slf4j:slf4j-log4j12:1.7.26',
+			
+			//logback
+			// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+			logback  : 'ch.qos.logback:logback-classic:1.2.10'
+
     ]
 
 }

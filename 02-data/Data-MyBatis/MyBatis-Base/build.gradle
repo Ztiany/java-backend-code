@@ -3,8 +3,8 @@ version '1.0'
 
 apply plugin: 'java'
 
-//根据SQL生成POJO、Mapper、和xml映射文件
-//apply plugin: "com.thinkimi.gradle.MybatisGenerator"
+// 根据 SQL 生成 POJO、Mapper、和 xml 映射文件，参考：https://github.com/kimichen13/mybatis-generator-plugin
+apply plugin: "com.thinkimi.gradle.MybatisGenerator"
 
 sourceCompatibility = 1.8
 
@@ -15,23 +15,22 @@ buildscript {
         }
     }
 
-    /*dependencies {
-        classpath "gradle.plugin.com.thinkimi.gradle:mybatis-generator-plugin:2.0"
-    }*/
+    //逆向工程
+    dependencies {
+        classpath "gradle.plugin.com.thinkimi.gradle:mybatis-generator-plugin:2.4"
+    }
 }
 
-//MybatisGenerator的配置
-/*configurations {
+// MybatisGenerator 的配置
+configurations {
     mybatisGenerator
-}*/
+}
 
-//MybatisGenerator的配置，指定配置文件位置
-/*
+// MybatisGenerator 的配置，指定配置文件位置
 mybatisGenerator {
     verbose = true
     configFile = 'src/main/resources/generatorConfig.xml'
 }
-*/
 
 repositories {
     maven {
@@ -64,7 +63,11 @@ dependencies {
     compile dataBaseLibs.dbcp2
     compile dataBaseLibs.mybatis
     compile dataBaseLibs.mybatisSpring
+    /*第三方二级缓存*/
+    compile dataBaseLibs.mybatisEhcache
+    /*分页插件*/
+    compile dataBaseLibs.myBatisPagerHelper
     /*日志库，不依赖则不会有日志*/
-    compile logLibs.commonsLogging
     compile logLibs.log4j
+    compile logLibs.logback
 }

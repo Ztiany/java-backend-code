@@ -83,7 +83,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from mybatis_items
+    from items
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -97,7 +97,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from mybatis_items
+    from items
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -110,21 +110,21 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from mybatis_items
+    from items
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from mybatis_items
+    delete from items
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="me.ztiany.mybatis.generate.pojo.ItemsExample">
-    delete from mybatis_items
+    delete from items
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="me.ztiany.mybatis.generate.pojo.Items">
-    insert into mybatis_items (id, name, price, 
+    insert into items (id, name, price, 
       pic, createtime, detail
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
@@ -132,7 +132,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="me.ztiany.mybatis.generate.pojo.Items">
-    insert into mybatis_items
+    insert into items
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -175,13 +175,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="me.ztiany.mybatis.generate.pojo.ItemsExample" resultType="java.lang.Long">
-    select count(*) from mybatis_items
+    select count(*) from items
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update mybatis_items
+    update items
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -207,7 +207,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update mybatis_items
+    update items
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=REAL},
@@ -219,7 +219,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update mybatis_items
+    update items
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=REAL},
@@ -230,7 +230,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="me.ztiany.mybatis.generate.pojo.Items">
-    update mybatis_items
+    update items
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -251,7 +251,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="me.ztiany.mybatis.generate.pojo.Items">
-    update mybatis_items
+    update items
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       pic = #{pic,jdbcType=VARCHAR},
@@ -260,7 +260,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="me.ztiany.mybatis.generate.pojo.Items">
-    update mybatis_items
+    update items
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       pic = #{pic,jdbcType=VARCHAR},

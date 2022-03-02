@@ -10,7 +10,7 @@ import me.ztiany.mybatis.pojo.User;
 public class UserDaoImpl implements UserDao {
 
     //注入
-    private SqlSessionFactory sqlSessionFactory;
+    private final SqlSessionFactory sqlSessionFactory;
 
     public UserDaoImpl(SqlSessionFactory sqlSessionFactory) {
         this.sqlSessionFactory = sqlSessionFactory;
