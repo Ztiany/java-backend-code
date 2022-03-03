@@ -22,10 +22,11 @@ import me.ztiany.mybatis.mapper.UserMapper;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring03_mapper_scanner.xml")
-public class SpringMapperScannerTest {
+public class Spring03_MapperScannerTest {
 
     @Resource
     private UserMapper mUserMapper;
+
     @Resource
     private OrderMapper mOrderMapper;
 

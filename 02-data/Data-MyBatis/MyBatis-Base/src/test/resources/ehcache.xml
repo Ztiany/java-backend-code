@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./ehcache.xsd">
 
     <!-- 磁盘保存路径 -->
     <diskStore path="D:\dev_data\ehcache"/>

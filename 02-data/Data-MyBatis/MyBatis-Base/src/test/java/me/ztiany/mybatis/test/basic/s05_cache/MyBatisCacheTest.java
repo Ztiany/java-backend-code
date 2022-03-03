@@ -1,6 +1,6 @@
 package me.ztiany.mybatis.test.basic.s05_cache;
 
-import me.ztiany.mybatis.pojo.cache.CacheUser;
+import me.ztiany.mybatis.pojo.CacheUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

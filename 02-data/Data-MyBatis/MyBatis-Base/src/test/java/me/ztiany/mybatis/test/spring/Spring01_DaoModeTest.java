@@ -18,7 +18,7 @@ import me.ztiany.mybatis.test.spring.dao.UserDao;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring01_dao.xml")
-public class SpringDaoTest {
+public class Spring01_DaoModeTest {
 
     @Resource(name = "userDao")
     private UserDao mUserDao;

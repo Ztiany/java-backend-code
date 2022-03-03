@@ -65,6 +65,7 @@
                 <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
+
         <!--oracle环境-->
         <environment id="dev_oracle">
             <transactionManager type="JDBC"/>

@@ -13,7 +13,7 @@
 
     <!--mvc核心配置文件-->
 
-    <!-- 扫描@Controler  @Service   -->
+    <!-- 扫描 @Controller  @Service   -->
     <context:component-scan base-package="me.ztiany.mvc"/>
 
     <!-- 处理器映射器 -->
@@ -32,7 +32,8 @@
     </bean>
 
     <!-- 配置转换器转换工厂 （日期去掉前后空格） -->
-    <bean id="conversionServiceFactoryBean" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <bean id="conversionServiceFactoryBean"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <!-- 配置 多个转换器-->
         <property name="converters">
             <list>
@@ -63,5 +64,8 @@
             <bean class="me.ztiany.mvc.interceptor.Interceptor2"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <!--Bean to Json-->
+    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 
 </beans>

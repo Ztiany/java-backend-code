@@ -18,6 +18,8 @@ dependencies {
     /*Servlet、JSTL*/
     providedCompile webBaseLibs.servlet
     compile webBaseLibs.jstl
+    compile webBaseLibs.tagLibsStandardSpec
+    compile webBaseLibs.tagLibsStandardImpl
 
     //Spring核心架构
     //core
@@ -44,6 +46,10 @@ dependencies {
     compile dataBaseLibs.dbcp2
     compile dataBaseLibs.mybatis
     compile dataBaseLibs.mybatisSpring
+
+    /*json*/
+    compile commonsLibs.jacksonCore
+    compile commonsLibs.jacksonDatabind
 
     /*日志*/
     compile logLibs.commonsLogging

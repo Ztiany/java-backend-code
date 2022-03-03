@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
@@ -37,15 +37,14 @@
         <!-- 基本包 -->
         <property name="basePackage" value="me.ztiany.mybatis.mapper"/>
         <!-- 会话工厂 不需要配置，MapperScannerConfigurer会自动从容器中获取-->
-        <!-- 如果加上自定义注解，那么只有被自定义的注解标记的接口才会被扫描 -->
-        <!--<property name="annotationClass" value="me.ztiany.mybatis.test.spring.MapperScanner"/>-->
+        <!-- 如果加上自定义注解，那么在 basePackage 中只有被自定义的注解标记的接口才会被扫描 -->
+        <!--<property name="annotationClass" value="me.ztiany.mybatis.test.spring.config.MapperScanner"/>-->
     </bean>
 
     <bean name="businessService" class="me.ztiany.mybatis.test.spring.service.BusinessServiceImpl"/>
 
     <!-- 事务管理器 -->
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 

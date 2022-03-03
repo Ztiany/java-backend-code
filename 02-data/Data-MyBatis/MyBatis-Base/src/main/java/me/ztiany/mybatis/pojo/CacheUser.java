@@ -1,6 +1,5 @@
-package me.ztiany.mybatis.pojo.cache;
+package me.ztiany.mybatis.pojo;
 
-import me.ztiany.mybatis.pojo.Order;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -71,7 +70,7 @@ public class CacheUser implements Serializable {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", sex=" + sex + ", birthday=" + birthday + ", address=" + address + ", ordersList=" + orderList + "]";
+        return "CacheUser [id=" + id + ", username=" + username + ", sex=" + sex + ", birthday=" + birthday + ", address=" + address + ", ordersList=" + orderList + "]";
     }
 
 }

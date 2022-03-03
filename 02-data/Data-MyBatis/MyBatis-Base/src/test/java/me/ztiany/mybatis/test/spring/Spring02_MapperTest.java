@@ -23,7 +23,7 @@ import me.ztiany.mybatis.mapper.UserMapper;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring02_mapper.xml")
-public class SpringMapperTest {
+public class Spring02_MapperTest {
 
     @Resource(name = "userMapper")
     private UserMapper mUserMapper;

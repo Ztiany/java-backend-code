@@ -9,14 +9,18 @@
             <param name="ConversionPattern" value="%-5p %d{MM-dd HH:mm:ss,SSS} %m  (%F:%L) \n"/>
         </layout>
     </appender>
+
     <logger name="java.sql">
         <level value="debug"/>
     </logger>
+
     <logger name="org.apache.ibatis">
         <level value="info"/>
     </logger>
+
     <root>
         <level value="debug"/>
         <appender-ref ref="STDOUT"/>
     </root>
+
 </log4j:configuration>

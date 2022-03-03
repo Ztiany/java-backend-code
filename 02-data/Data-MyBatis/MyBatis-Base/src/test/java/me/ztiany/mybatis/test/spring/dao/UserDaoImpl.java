@@ -7,7 +7,7 @@ import me.ztiany.mybatis.pojo.User;
 import me.ztiany.mybatis.mapper.UserMapper;
 
 /**
- * 原始Dao开发
+ * 原始 Dao 开发。
  */
 public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 

@@ -1,4 +1,4 @@
-package me.ztiany.mybatis.test.spring;
+package me.ztiany.mybatis.test.spring.config;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

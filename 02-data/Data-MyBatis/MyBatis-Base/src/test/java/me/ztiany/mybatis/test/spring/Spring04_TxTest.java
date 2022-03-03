@@ -21,7 +21,7 @@ import me.ztiany.mybatis.test.spring.service.BusinessService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring04_tx_manager.xml")
-public class SpringTxTest {
+public class Spring04_TxTest {
 
     @Resource(name = "businessService")
     private BusinessService mBusinessService;
