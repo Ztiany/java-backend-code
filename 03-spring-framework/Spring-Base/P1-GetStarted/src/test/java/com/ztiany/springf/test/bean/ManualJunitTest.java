@@ -3,6 +3,8 @@ package com.ztiany.springf.test.bean;
 import com.ztiany.springf.test.bean.domain.CollectionBean;
 import com.ztiany.springf.test.bean.domain.User;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +23,8 @@ public class ManualJunitTest {
 
     private ApplicationContext applicationContext;
 
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
     @Before
     public void init() {
         //1 创建容器对象
@@ -32,6 +36,7 @@ public class ManualJunitTest {
         //2 向容器"要"user对象
         User user = (User) applicationContext.getBean("user1");
         assertNotNull(user);
+        logger.info("testApplicationContext.user = " + user);
     }
 
     @Test

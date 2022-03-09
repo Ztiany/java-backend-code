@@ -2,3 +2,5 @@ rootProject.name = 'Data-MyBatis'
 
 include 'MyBatis-Base'
 include 'MyBatis-Spring'
+include 'MyBatis-MyBatisPlus'
+

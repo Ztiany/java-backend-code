@@ -53,7 +53,7 @@ dependencies {
 
     /*日志*/
     compile logLibs.commonsLogging
-    compile logLibs.log4j
+    compile logLibs.log4jV1
 
     /*工具*/
     compile commonsLibs.commonsIO

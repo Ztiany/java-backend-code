@@ -1,0 +1,33 @@
+# 开启 debug 模式
+debug: on
+
+# Spring 配置
+spring:
+  mvc:
+    static-path-pattern: /public/**
+  # 数据库
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot-base?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 201314
+    driver-class-name: com.mysql.jdbc.Driver
+  jdbc:
+    template:
+      query-timeout: 3 # 3 秒超时
+
+
+# 服务器配置
+server:
+  port: 8082
+  servlet:
+    context-path: /web
+
+# 日志
+logging:
+  file:
+    name: spring_boot_log.log
+  pattern:
+    console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+    file: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+  level:
+    me.ztiany: trace

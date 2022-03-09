@@ -68,6 +68,6 @@ dependencies {
     /*分页插件*/
     compile dataBaseLibs.myBatisPagerHelper
     /*日志库，不依赖则不会有日志*/
-    compile logLibs.log4j
+    compile logLibs.log4jV1
     compile logLibs.logback
 }

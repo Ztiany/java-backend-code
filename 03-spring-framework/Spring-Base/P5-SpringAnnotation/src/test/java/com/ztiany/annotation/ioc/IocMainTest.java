@@ -80,7 +80,7 @@ public class IocMainTest {
     }
 
     /*
-    -Dspring.profiles.active=test
+    启动参数：-Dspring.profiles.active=test
      */
     @Test
     public void testProfileConfig1() {

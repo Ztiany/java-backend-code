@@ -13,6 +13,7 @@ dependencies {
 
     //test
     testCompile testLibs.junit
+    testCompile testLibs.junit5
 
     //Spring核心架构
     //core
@@ -35,6 +36,6 @@ dependencies {
     compile dataBaseLibs.c3p0
 
     /*日志*/
-    compile logLibs.commonsLogging
-    compile logLibs.log4j
+    compile logLibs.log4jV2Api
+    compile logLibs.log4jV2Core
 }
