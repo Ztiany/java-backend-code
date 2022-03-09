@@ -13,12 +13,12 @@ public class GlobalErrorHandler {
     @ExceptionHandler({NullPointerException.class})
     @ResponseBody
     public HttpError handleException1(Exception e) {
-        return new HttpError(20, e.getMessage());//json
+        return new HttpError(20, e.getMessage());//返回的是 json
     }
 
     @ExceptionHandler({ArithmeticException.class})
     public String handleException2(Exception e) {
-        return "forward:/error";//error 视图
+        return "forward:/error";//返回的是 error 视图
     }
 
 }

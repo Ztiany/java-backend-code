@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import java.util.List;
 
 /**
- * 自定义的 Converter
+ * 自定义的 HttpMessageConverter。
  */
 public class CustomMessageConverter implements HttpMessageConverter<Person> {
 

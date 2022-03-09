@@ -23,6 +23,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 配置 WebMVC。
+ */
 @Component
 @Slf4j
 public class APPWebConfiguration {

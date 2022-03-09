@@ -9,6 +9,9 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * 注入自己的 Servlet 组件。
+ */
 @Configuration
 @Slf4j
 public class AppServletConfiguration {
