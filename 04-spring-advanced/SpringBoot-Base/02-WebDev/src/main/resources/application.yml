@@ -11,6 +11,24 @@ spring:
     username: root
     password: 201314
     driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      aop-patterns: me.ztiany.springboot.*
+      filters: stat,wall  # 底层开启功能，stat（sql 监控），wall（防火墙）
+      stat-view-servlet: # 配置监控页功能
+        enabled: true
+        login-username: admin
+        login-password: admin
+        resetEnable: false
+        url-pattern: /druid/*
+      filter:
+        stat: # 对上面 filters 里面的 stat 进行详细配置
+          slow-sql-millis: 1000
+          logSlowSql: true
+          enabled: true
+        wall:
+          enabled: true
+          config:
+            drop-table-allow: false
   jdbc:
     template:
       query-timeout: 3 # 3 秒超时
@@ -24,10 +42,16 @@ server:
 
 # 日志
 logging:
-  file:
-    name: spring_boot_log.log
+#  file:
+#    name: spring_boot_log.log
   pattern:
     console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
     file: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
   level:
     me.ztiany: trace
+
+# MyBatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

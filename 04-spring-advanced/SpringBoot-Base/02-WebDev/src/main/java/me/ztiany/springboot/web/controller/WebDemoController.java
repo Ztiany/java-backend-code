@@ -14,6 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+    Controller 导致支持哪些参数和返回值呢？
+        1. Spring WebMVC 使用 HandlerMethodArgumentResolver 来解析 Controller 声明的参数类型，所以参数解析能力看容器中 HandlerMethodReturnValueHandler 实现。
+        2. Spring WebMVC 使用 HandlerMethodReturnValueHandler 来处理 Controller 的返回值，所以返回值处理能力看容器中 HandlerMethodReturnValueHandler 实现。
+ */
 @Controller
 @Slf4j
 public class WebDemoController {
