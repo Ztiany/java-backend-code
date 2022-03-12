@@ -32,7 +32,7 @@ public class JdbcTemplateTest {
     @Test
     public void testDataSource() {
         System.out.println("testDataSource = " + dataSource.getClass());
-        Assertions.assertTrue(dataSource == jdbcTemplate.getDataSource());
+        Assertions.assertSame(dataSource, jdbcTemplate.getDataSource());
     }
 
 }

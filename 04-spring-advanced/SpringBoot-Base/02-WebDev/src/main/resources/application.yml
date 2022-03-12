@@ -32,6 +32,12 @@ spring:
   jdbc:
     template:
       query-timeout: 3 # 3 秒超时
+  jpa:
+    hibernate:
+      ddl-auto: update # 更新或者创建表结构
+    show-sql: true # 控制台显示 SQL
+  redis:
+    url: redis://127.0.0.1:6379
 
 
 # 服务器配置
@@ -42,8 +48,8 @@ server:
 
 # 日志
 logging:
-#  file:
-#    name: spring_boot_log.log
+  #  file:
+  #    name: spring_boot_log.log
   pattern:
     console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
     file: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
