@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 // RestController = @Controller + @ResponseBody
 @Controller
 @RequestMapping("/demo")
-@Slf4j//Lombok 会自动注入 Slf4j 日志，属性名为 log。
+//Lombok 会自动注入 Slf4j 日志，属性名为 log。
+@Slf4j
 public class DemoController {
 
     private final Administrator administrator;
