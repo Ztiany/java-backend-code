@@ -1,6 +1,0 @@
-rootProject.name = 'Spring-SSH'
-
-include 'P1-Struts2-Base'
-include 'P2-Spring-Hibernate'
-include 'P3-Spring-Struts2'
-

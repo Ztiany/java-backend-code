@@ -1,0 +1,11 @@
+rootProject.name = 'Java-Servlet-V2'
+
+include(':Servlet-Base')
+include(':Servlet-Filter')
+include(':Servlet-SessionManagement')
+include(':Servlet-FileUploading')
+include(':Servlet-FileUploading')
+include(':Servlet-JSP-Base')
+include(':Servlet-MVC-Sample-Customer')
+include(':Servlet-MVC-Sample-Register')
+include(':Servlet-AJAX-Base')

@@ -1,4 +1,0 @@
-rootProject.name = 'SpringBoot-Base'
-include '01-GetStarted'
-include '02-WebDev'
-

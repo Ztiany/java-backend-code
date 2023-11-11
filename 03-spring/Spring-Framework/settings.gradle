@@ -1,0 +1,19 @@
+rootProject.name = 'Spring-Framework'
+
+include ':01-Spring-Core:P1-GetStarted'
+include ':01-Spring-Core:P2-Beans'
+include ':01-Spring-Core:P3-AOP'
+include ':01-Spring-Core:P4-SpringJDBC'
+include ':01-Spring-Core:P5-SpringAnnotation'
+
+
+include ':02-Spring-Web:P1-Spring-UsingInWeb'
+include ':02-Spring-Web:P2-Spring-SpringMVC'
+include ':02-Spring-Web:P3-SpringMVC-Base'
+include ':02-Spring-Web:P4-SpringMVC-CRUD'
+include ':02-Spring-Web:P5-SpringMVC-Annotation'
+include ':02-Spring-Web:P6-SpringSSP'
+
+include ':03-Spring-SSH:P1-Struts2-Base'
+include ':03-Spring-SSH:P2-Spring-Hibernate'
+include ':03-Spring-SSH:P3-Spring-Struts2'
