@@ -6,11 +6,10 @@
 - 构建工具：Gradle。
 - 服务器：Tomcat。
 
-Tomcat 乱码问题：
+**控制台乱码问题**：
 
-1. Tomcat6，Tomcat7 默认使用 `IOS8859-1`；Tomcat8 及以后默认使用 `UTF-8`。
-2. 因此低版本的需要设置 JVM 运行时字符编码，`-Dfile.encoding=UTF-8`参数。
-3. `Dfile.encoding` 用于设置外部环境的编码，Java 的 I/O 操作也是使用此编码。
+- 如果是 Tomcat 服务器内部日志乱码，则在 Tomcat 下的 `conf/logging.properties` 这个文件中添加 `java.util.logging.ConsoleHandler.encoding = GBK/UTF-8` 属性。到底是设置为 GBK 还是 UTF-8 得根据 IDEA 控制台的编码，原则是与 IDEA 控制台的编码保持一致。具体参考 [Java file.encoding](https://www.cnblogs.com/virgosnail/p/10868402.html)。
+- 如果不是 Tomcat 服务器内部日志乱码，而是代码打印的日志乱码，则设置 JVM 运行时字符编码，`-Dfile.encoding=UTF-8` 参数。`Dfile.encoding` 用于设置外部环境的编码，Java 的 I/O 操作也是使用此编码。
 
 ## 项目说明
 
